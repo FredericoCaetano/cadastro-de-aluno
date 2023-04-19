@@ -10,7 +10,9 @@ public class Janela extends JFrame{
         setLocationRelativeTo(null);
 
         JButton botao = new JButton("Clique aqui!");
+        JButton botao2 = new JButton("Clique aqui tambem!");
         add(botao);
+        add(botao2);
 
         setVisible(true);
     }
