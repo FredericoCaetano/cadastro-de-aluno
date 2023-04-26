@@ -1,48 +1,35 @@
 package br.edu.unicid.view;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class Janela extends JFrame {
 
     private JPanel painel;
-    private JPanel subPainel;
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Janela frame = new Janela();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
     public Janela() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 500);
-        setLocationRelativeTo(null);
-
+        setBounds(100, 100, 814, 436);
         painel = new JPanel();
-        painel.setBackground(new Color(255, 200, 200));
-        JButton botao1 = new JButton("OK");
-        painel.add(botao1);
+        painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-        subPainel = new JPanel();
+        setContentPane(painel);
+        painel.setLayout(null);
 
-        painel.setLayout(new OverlayLayout(painel));
-
-        subPainel.setVisible(false);
-        painel.add(subPainel);
-
-        botao1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                subPainel.setVisible(true);
-                Dimension tamanhoPainel = painel.getSize();
-                Dimension tamanhoSubPainel = subPainel.getPreferredSize();
-                int x = (tamanhoPainel.width - tamanhoSubPainel.width) / 2;
-                int y = (tamanhoPainel.height - tamanhoSubPainel.height) / 2;
-                subPainel.setBounds(x, y, tamanhoPainel.width, tamanhoSubPainel.height);
-            }
-        });
-
-        add(painel);
-
-        setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Janela();
     }
 }
