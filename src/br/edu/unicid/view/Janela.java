@@ -1,32 +1,29 @@
 package br.edu.unicid.view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.PlainDocument;
 
 public class Janela extends JFrame {
 
-    private JPanel painel;
-    private JLabel lblRgm;
-    private JTextField txtRgm;
-    private JLabel lblNome;
-    private JTextField txtNome;
-    private JLabel lblDataNasc;
-    private JTextField txtDataNasc;
-    private JLabel lblCpf;
-    private JTextField txtCpf;
-    private JLabel lblEmail;
-    private JTextField txtEmail;
-    private JLabel lblEndereco;
-    private JTextField txtEndereco;
-    private JLabel lblMunicipio;
-    private JTextField txtMunicipio;
-    private JLabel lblUF;
-    private JTextField txtUF;
-    private JLabel lblCelular;
-    private JTextField txtCelular;
+    private JMenuBar menu;
+    private JMenu menuAluno;
+    private JMenu menuAjuda;
+    private JMenu menuNeF;
+    private JMenuItem menuItemSalvar;
+    private JMenuItem menuItemAlterar;
+    private JMenuItem menuItemConsultar;
+    private JMenuItem menuItemExcluir;
+    private JSeparator separador;
+    private JMenuItem menuItemSair;
+    private JPanel painelPrincipal;
+    private JTabbedPane painelSup;
+    private JPanel painelDP;
 
     public static void main(String[] args) {
 
@@ -43,151 +40,101 @@ public class Janela extends JFrame {
     }
 
     public Janela() {
+
+        // Configurando o frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 800, 450);
-        painel = new JPanel();
-        painel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setBounds(400, 300, 800, 500);
+        setTitle("Cadastro de Aluno");
+        setFont(new Font("Times New Roman", Font.PLAIN, 16));
 
-        setContentPane(painel);
-        painel.setLayout(null);
+        // Criando o menu
+        menu = new JMenuBar();
+        setJMenuBar(menu);
 
-        lblRgm = new JLabel("Rgm");
-        lblRgm.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblRgm.setBounds(15, 10, 100, 30);
-        painel.add(lblRgm);
+        // Configurando o menu "Aluno"
+        menuAluno = new JMenu("Aluno");
+        menu.add(menuAluno);
 
-        txtRgm = new JTextField();
-        txtRgm.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtRgm.setBounds(70, 10, 150, 30);
-        txtRgm.setHorizontalAlignment(SwingConstants.CENTER);
-        painel.add(txtRgm);
-        txtRgm.setColumns(10);
-        PlainDocument doc = new PlainDocument();
-        doc.setDocumentFilter(new LimitadorDeCaracteres(8));
-        txtRgm.setDocument(doc);
+        menuItemSalvar = new JMenuItem("Salvar");
+        menuItemSalvar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
+        menuAluno.add(menuItemSalvar);
 
-        lblNome = new JLabel("Nome");
-        lblNome.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblNome.setBounds(230, 10, 100, 30);
-        painel.add(lblNome);
+        menuItemAlterar = new JMenuItem("Alterar");
+        menuAluno.add(menuItemAlterar);
 
-        txtNome = new JTextField();
-        txtNome.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtNome.setBounds(303, 10, 460, 30);
-        txtNome.setHorizontalAlignment(SwingConstants.CENTER);
-        painel.add(txtNome);
-        txtNome.setColumns(10);
+        menuItemConsultar = new JMenuItem("Consulta");
+        menuAluno.add(menuItemConsultar);
 
-        lblDataNasc = new JLabel("Data de Nascimento");
-        lblDataNasc.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblDataNasc.setBounds(15, 50, 100, 30);
-        painel.add(lblDataNasc);
+        menuItemExcluir = new JMenuItem("Excluir");
+        menuAluno.add(menuItemExcluir);
 
-        txtDataNasc = new JTextField();
-        txtDataNasc.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtDataNasc.setBounds(120, 50, 150, 30);
-        txtDataNasc.setHorizontalAlignment(SwingConstants.CENTER);
-        painel.add(txtDataNasc);
-        txtDataNasc.setColumns(10);
+        separador = new JSeparator();
+        menuAluno.add(separador);
 
-        lblCpf = new JLabel("Cpf");
-        lblCpf.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblCpf.setBounds(280, 50, 100, 30);
-        painel.add(lblCpf);
-
-        txtCpf = new JTextField();
-        txtCpf.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtCpf.setBounds(330, 50, 180, 30);
-        txtCpf.setHorizontalAlignment(SwingConstants.CENTER);
-        painel.add(txtCpf);
-        txtCpf.setColumns(10);
-
-        lblEmail = new JLabel("Email");
-        lblEmail.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblEmail.setBounds(15, 90, 100, 30);
-        painel.add(lblEmail);
-
-        txtEmail = new JTextField();
-        txtEmail.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtEmail.setBounds(130, 90, 630, 30);
-        txtEmail.setHorizontalAlignment(SwingConstants.CENTER);
-        painel.add(txtEmail);
-        txtEmail.setColumns(10);
-
-        lblEndereco = new JLabel("Endereco");
-        lblEndereco.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblEndereco.setBounds(15, 130, 100, 30);
-        painel.add(lblEndereco);
-
-        txtEndereco = new JTextField();
-        txtEndereco.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtEndereco.setBounds(130, 130, 630, 30);
-        txtEndereco.setHorizontalAlignment(SwingConstants.CENTER);
-        painel.add(txtEndereco);
-        txtEndereco.setColumns(10);
-
-        lblMunicipio = new JLabel("Municipio");
-        lblMunicipio.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblMunicipio.setBounds(15, 170, 100, 30);
-        painel.add(lblMunicipio);
-
-        txtMunicipio = new JTextField();
-        txtMunicipio.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtMunicipio.setBounds(130, 170, 150, 30);
-        txtMunicipio.setHorizontalAlignment(SwingConstants.CENTER);
-        painel.add(txtMunicipio);
-        txtMunicipio.setColumns(10);
-
-        lblUF = new JLabel("UF");
-        lblUF.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblUF.setBounds(310, 170, 100, 30);
-        painel.add(lblUF);
-
-        txtUF = new JTextField();
-        txtUF.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtUF.setBounds(380, 170, 70, 30);
-        txtUF.setHorizontalAlignment(SwingConstants.CENTER);
-        painel.add(txtUF);
-        txtUF.setColumns(10);
-
-        lblCelular = new JLabel("Celular");
-        lblCelular.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblCelular.setBounds(480, 170, 100, 30);
-        painel.add(lblCelular);
-
-        txtCelular = new JTextField();
-        txtCelular.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtCelular.setBounds(570, 170, 190, 30);
-        txtCelular.setHorizontalAlignment(SwingConstants.CENTER);
-        painel.add(txtCelular);
-        txtCelular.setColumns(10);
-
-    }
-
-    class LimitadorDeCaracteres extends javax.swing.text.DocumentFilter {
-        private int maxCaracteres;
-
-        public LimitadorDeCaracteres(int maxCaracteres) {
-            this.maxCaracteres = maxCaracteres;
-        }
-
-        @Override
-        public void replace(javax.swing.text.DocumentFilter.FilterBypass fb, int offset, int length, String text,
-                javax.swing.text.AttributeSet attrs) throws javax.swing.text.BadLocationException {
-            int novoComprimento = fb.getDocument().getLength() - length + text.length();
-            if (novoComprimento <= maxCaracteres) {
-                super.replace(fb, offset, length, text, attrs);
+        menuItemSair = new JMenuItem("Sair");
+        menuItemSair.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                System.exit(0);
             }
-        }
+        });
+        menuItemSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.SHIFT_DOWN_MASK));
+        menuAluno.add(menuItemSair);
 
-        @Override
-        public void insertString(javax.swing.text.DocumentFilter.FilterBypass fb, int offset, String string,
-                javax.swing.text.AttributeSet attr) throws javax.swing.text.BadLocationException {
-            int novoComprimento = fb.getDocument().getLength() + string.length();
-            if (novoComprimento <= maxCaracteres) {
-                super.insertString(fb, offset, string, attr);
-            }
-        }
+        // Configurando o menu "Notas e Faltas"
+        menuNeF = new JMenu("Notas e Faltas");
+        menu.add(menuNeF);
 
+        menuItemSalvar = new JMenuItem("Salvar");
+        menuNeF.add(menuItemSalvar);
+
+        menuItemAlterar = new JMenuItem("Alterar");
+        menuItemAlterar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
+        menuNeF.add(menuItemAlterar);
+
+        menuItemExcluir = new JMenuItem("Excluir");
+        menuNeF.add(menuItemExcluir);
+
+        menuItemConsultar = new JMenuItem("Consulta");
+        menuNeF.add(menuItemConsultar);
+
+        // Configurando o menu "Ajuda"
+        menuAjuda = new JMenu("Ajuda");
+        menu.add(menuAjuda);
+
+        menuItemConsultar = new JMenuItem("Sobre");
+        menuAjuda.add(menuItemConsultar);
+
+        // Configurando o painel principal
+        painelPrincipal = new JPanel();
+        painelPrincipal.setBackground(new Color(191, 224, 255));
+        painelPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(painelPrincipal);
+        painelPrincipal.setLayout(null);
+
+        // Configurando as guias
+        painelSup = new JTabbedPane(JTabbedPane.TOP);
+        painelSup.setBounds(10, 10, 762, 416);
+        painelPrincipal.add(painelSup);
+
+        painelDP = new JPanel();
+        painelDP.setForeground(new Color(30, 144, 255));
+        painelSup.addTab("Dados Pessoais", null, painelDP, null);
+        painelDP.setLayout(null);
+
+        painelDP = new JPanel();
+        painelDP.setForeground(new Color(30, 144, 255));
+        painelSup.addTab("Curso", null, painelDP, null);
+        painelDP.setLayout(null);
+
+        painelDP = new JPanel();
+        painelDP.setForeground(new Color(30, 144, 255));
+        painelSup.addTab("Notas e Faltas", null, painelDP, null);
+        painelDP.setLayout(null);
+
+        painelDP = new JPanel();
+        painelDP.setForeground(new Color(30, 144, 255));
+        painelSup.addTab("Boletim", null, painelDP, null);
+        painelDP.setLayout(null);
     }
 }
