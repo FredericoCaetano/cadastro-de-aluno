@@ -44,6 +44,15 @@ public class Janela extends JFrame {
     private JComboBox<String> txtUF;
     private JLabel lblCelular;
     private JFormattedTextField txtCelular;
+    private JLabel lblCurso;
+    private JComboBox<String> txtCurso;
+    private JComboBox<String> txtCampus;
+    private JLabel lblCampus;
+    private JLabel lblPeriodo;
+    private JRadioButton txtMatutino;
+    private JRadioButton txtVespertino;
+    private JRadioButton txtNoturno;
+    private ButtonGroup periodo;
 
     public static void main(String[] args) {
 
@@ -261,11 +270,59 @@ public class Janela extends JFrame {
         painelSup.addTab("Curso", null, painelDP, null);
         painelDP.setLayout(null);
 
+        lblCurso = new JLabel("Curso");
+        lblCurso.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lblCurso.setBounds(15, 50, 150, 30);
+        painelDP.add(lblCurso);
+
+        String[] opcoes2 = { "", "Análise e Desenvolvimento de Sistemas", "Ciência da Computação",
+                "Engenharia da Computação", "Gestão da Tecnologia da Informação", "Sistemas de Informação" };
+        txtCurso = new JComboBox<String>(opcoes2);
+        txtCurso.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
+        txtCurso.setBounds(130, 50, 600, 30);
+        painelDP.add(txtCurso);
+
+        lblCampus = new JLabel("Campus");
+        lblCampus.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lblCampus.setBounds(15, 110, 150, 30);
+        painelDP.add(lblCampus);
+
+        String[] opcoes3 = { "", "Pinheiros", "Tatuapé" };
+        txtCampus = new JComboBox<String>(opcoes3);
+        txtCampus.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
+        txtCampus.setBounds(130, 110, 600, 30);
+        painelDP.add(txtCampus);
+
+        lblPeriodo = new JLabel("Período");
+        lblPeriodo.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lblPeriodo.setBounds(15, 170, 150, 30);
+        painelDP.add(lblPeriodo);
+
+        txtMatutino = new JRadioButton("Matutino");
+        txtMatutino.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
+        txtMatutino.setBounds(130, 170, 100, 30);
+        txtVespertino = new JRadioButton("Vespertino");
+        txtVespertino.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
+        txtVespertino.setBounds(370, 170, 200, 30);
+        txtNoturno = new JRadioButton("Noturno");
+        txtNoturno.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
+        txtNoturno.setBounds(640, 170, 100, 30);
+        periodo = new ButtonGroup();
+        periodo.add(txtMatutino);
+        periodo.add(txtVespertino);
+        periodo.add(txtNoturno);
+
+        painelDP.add(txtMatutino);
+        painelDP.add(txtVespertino);
+        painelDP.add(txtNoturno);
+
+        // Configurando guia Notas e Faltas
         painelDP = new JPanel();
         painelDP.setForeground(new Color(30, 144, 255));
         painelSup.addTab("Notas e Faltas", null, painelDP, null);
         painelDP.setLayout(null);
 
+        // Configurando guia Boletim
         painelDP = new JPanel();
         painelDP.setForeground(new Color(30, 144, 255));
         painelSup.addTab("Boletim", null, painelDP, null);
