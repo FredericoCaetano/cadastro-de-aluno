@@ -53,6 +53,11 @@ public class Janela extends JFrame {
     private JRadioButton txtVespertino;
     private JRadioButton txtNoturno;
     private ButtonGroup periodo;
+    private JButton btnNovo;
+    private JButton btnAlterar;
+    private JButton btnSalva;
+    private AbstractButton btnConsulta;
+    private JButton btnDelete;
 
     public static void main(String[] args) {
 
@@ -248,7 +253,7 @@ public class Janela extends JFrame {
                 "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
         txtUF = new JComboBox<String>(opcoes);
         txtUF.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtUF.setBounds(380, 290, 60, 30);
+        txtUF.setBounds(380, 290, 80, 30);
         painelDP.add(txtUF);
 
         lblCelular = new JLabel("Celular");
@@ -300,21 +305,99 @@ public class Janela extends JFrame {
 
         txtMatutino = new JRadioButton("Matutino");
         txtMatutino.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtMatutino.setBounds(130, 170, 100, 30);
+        txtMatutino.setBounds(130, 170, 200, 30);
         txtVespertino = new JRadioButton("Vespertino");
         txtVespertino.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
         txtVespertino.setBounds(370, 170, 200, 30);
         txtNoturno = new JRadioButton("Noturno");
         txtNoturno.setFont(new Font("Times New Roman", Font.PLAIN + Font.ITALIC, 20));
-        txtNoturno.setBounds(640, 170, 100, 30);
+        txtNoturno.setBounds(620, 170, 100, 30);
         periodo = new ButtonGroup();
         periodo.add(txtMatutino);
         periodo.add(txtVespertino);
         periodo.add(txtNoturno);
-
+        
         painelDP.add(txtMatutino);
         painelDP.add(txtVespertino);
         painelDP.add(txtNoturno);
+
+        btnSalva = new JButton("");
+        btnSalva.setToolTipText("Novo");
+        btnSalva.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                
+            }
+        });
+        ImageIcon iconeSalva = new ImageIcon("imgs/icons/salvar.png");
+        iconeSalva.setImage(iconeSalva.getImage().getScaledInstance(80 , 75, 1));
+        btnSalva.setIcon(iconeSalva);
+        btnSalva.setBounds(15, 230, 90, 85);
+        painelDP.add(btnSalva);
+
+        btnAlterar = new JButton("");
+        btnAlterar.setToolTipText("Alterar");
+        btnAlterar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                
+            }
+        });
+        ImageIcon iconeAlterar = new ImageIcon("imgs/icons/alterar.png");
+        iconeAlterar.setImage(iconeAlterar.getImage().getScaledInstance(80 , 75, 1));
+        btnAlterar.setIcon(iconeAlterar);
+        btnAlterar.setBounds(169, 230, 90, 85);
+        painelDP.add(btnAlterar);
+
+        btnConsulta = new JButton("");
+        btnConsulta.setToolTipText("Novo");
+        btnConsulta.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                
+            }
+        });
+        ImageIcon iconeConsulta = new ImageIcon("imgs/icons/consultar.png");
+        iconeConsulta.setImage(iconeConsulta.getImage().getScaledInstance(80, 75, 1));
+        btnConsulta.setIcon(iconeConsulta);
+        btnConsulta.setBounds(323, 230, 90, 85);
+        painelDP.add(btnConsulta);
+
+        btnDelete = new JButton("");
+        btnDelete.setToolTipText("Novo");
+        btnDelete.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                
+            }
+        });
+        ImageIcon iconeDelete = new ImageIcon("imgs/icons/deletar.png");
+        iconeDelete.setImage(iconeDelete.getImage().getScaledInstance(80, 75, 1));
+        btnDelete.setIcon(iconeDelete);
+        btnDelete.setBounds(477, 230, 90, 85);
+        painelDP.add(btnDelete);
+
+
+        btnNovo = new JButton("");
+        btnNovo.setToolTipText("Novo");
+        btnNovo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                txtRgm.setText(null);
+                txtNome.setText(null);
+                txtDataNasc.setText(null);
+                txtCpf.setText(null);
+                txtEmail.setText(null);
+                txtEndereco.setText(null);
+                txtMunicipio.setText(null);
+                txtUF.setSelectedIndex(0);
+                txtCelular.setText(null);
+                txtCurso.setSelectedIndex(0);
+                txtCampus.setSelectedIndex(0);
+                periodo.clearSelection();
+            }
+        });
+        ImageIcon iconeNovo = new ImageIcon("imgs/icons/novo.png");
+        iconeNovo.setImage(iconeNovo.getImage().getScaledInstance(110 , 105, 1));
+        btnNovo.setIcon(iconeNovo);
+        btnNovo.setBounds(630, 230, 90, 85);
+        painelDP.add(btnNovo);
+        
 
         // Configurando guia Notas e Faltas
         painelDP = new JPanel();
