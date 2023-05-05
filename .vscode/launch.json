@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ConnectionFactory",
+            "request": "launch",
+            "mainClass": "br.edu.unicid.util.ConnectionFactory",
+            "projectName": "Cadastro-de-Aluno_b668858d"
+        },
+        {
+            "type": "java",
+            "name": "Janela",
+            "request": "launch",
+            "mainClass": "br.edu.unicid.view.Janela",
+            "projectName": "Cadastro-de-Aluno_b668858d"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
